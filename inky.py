@@ -1,11 +1,9 @@
-'''import climage module to display images on terminal'''
-from climage import convert
+from flask import Flask, render_template
 
-
-def main():
-    '''Take in PNG and output as ANSI to terminal'''
-    output = convert('inky.png', is_unicode=True)
-    print(output)
+helloworld = Flask(__name__)
+@helloworld.route("/")
+def run():
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    main()
+    helloworld.run(host="0.0.0.0", port=int("3000"))
